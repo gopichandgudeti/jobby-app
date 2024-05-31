@@ -1,12 +1,12 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {MdLocationOn} from 'react-icon/md'
+import {MdLocationOn} from 'react-icons/md'
 import {AiFillStar} from 'react-icons/ai'
 import {BiLinkExternal} from 'react-icons/bi'
 import Loader from 'react-loader-spinner'
 import Header from '../Header'
 
-import SimilarJobs from '../SimilarJobs'
+import SimilarJobItem from '../SimilarJobItem'
 import './index.css'
 
 const apiStatusConstants = {
@@ -171,7 +171,7 @@ class AboutJobItem extends Component {
           <h1 className="similar-jobs-heading">Similar Jobs</h1>
           <ul className="similar-jobs-ul-container">
             {similarJobsData.map(eachItem => (
-              <SimilarJobs
+              <SimilarJobItem
                 key={eachItem.id}
                 similarJobData={eachItem}
                 employmentType={employmentType}

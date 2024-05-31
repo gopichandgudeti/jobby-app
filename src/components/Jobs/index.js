@@ -46,6 +46,29 @@ const salaryRangesList = [
   },
 ]
 
+const locationsList = [
+  {
+    locationId: 'HYDERABAD',
+    label: 'Hyderabad',
+  },
+  {
+    locationId: 'BANGALORE',
+    label: 'Bangalore',
+  },
+  {
+    locationId: 'CHENNAI',
+    label: 'Chennai',
+  },
+  {
+    locationId: 'DELHI',
+    label: 'Delhi',
+  },
+  {
+    locationId: 'MUMBAI',
+    label: 'Mumbai',
+  },
+]
+
 const apiStatusConstants = {
   initial: 'INITIAL',
   success: 'SUCCESS',
@@ -60,6 +83,7 @@ class Jobs extends Component {
     employeeType: [],
     minimumSalary: 0,
     searchInput: '',
+    location: [],
   }
 
   componentDidMount() {
@@ -200,6 +224,15 @@ class Jobs extends Component {
     )
   }
 
+  changeLocation = location => {
+    this.setState(
+      prev => ({
+        location: [...prev.location, location],
+      }),
+      this.getJobs,
+    )
+  }
+
   render() {
     const {searchInput} = this.state
     return (
@@ -215,6 +248,8 @@ class Jobs extends Component {
               getJobs={this.getJobs}
               changeSalary={this.changeSalary}
               changeEmployeeList={this.changeEmployeeList}
+              locationsList={locationsList}
+              changeLocation={this.changeLocation}
             />
             <div className="search-input-jobs-list-container">
               <div className="search-input-container-desktop">

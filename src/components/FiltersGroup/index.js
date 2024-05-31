@@ -1,7 +1,7 @@
 import {BsSearch} from 'react-icons/bs'
 
 import ProfileDetails from '../ProfileDetails'
-/*import './index.css'*/
+/* import './index.css' */
 
 const FiltersGroup = props => {
   const onChangeSearchInput = event => {
@@ -19,22 +19,22 @@ const FiltersGroup = props => {
   const renderSearchInput = () => {
     const {getJobs, searchInput} = props
     return (
-      <div className='search-input-container'>
+      <div className="search-input-container">
         <input
-          type='search'
-          className='search-input'
-          placeholder='search'
+          type="search"
+          className="search-input"
+          placeholder="search"
           value={searchInput}
           onChange={onChangeSearchInput}
           onKeyDown={onEnterSearchInput}
         />
         <button
-          type='button'
-          id='searchButton'
-          className='search-button-container'
+          type="button"
+          id="searchButton"
+          className="search-button-container"
           onClick={getJobs}
         >
-          <BsSearch className='search-icon' />
+          <BsSearch className="search-icon" aria-label="search" />
         </button>
       </div>
     )
@@ -43,9 +43,9 @@ const FiltersGroup = props => {
   const renderTypeOfEmployment = () => {
     const {employmentTypesList} = props
     return (
-      <div className='employment-type-container'>
-        <h1 className='employment-type-heading'>Type of Employment</h1>
-        <ul className='employment-type-list-container'>
+      <div className="employment-type-container">
+        <h1 className="employment-type-heading">Type of Employment</h1>
+        <ul className="employment-type-list-container">
           {employmentTypesList.map(eachEmployeeType => {
             const {changeEmployeeList} = props
             const onSelectEmployeeType = event => {
@@ -53,19 +53,19 @@ const FiltersGroup = props => {
             }
             return (
               <li
-                className='employee-item'
+                className="employee-item"
                 key={eachEmployeeType.employmentTypeId}
                 onChange={onSelectEmployeeType}
               >
                 <input
-                  type='checkbox'
+                  type="checkbox"
                   id={eachEmployeeType.employmentTypeId}
-                  className='check-input'
+                  className="check-input"
                   value={eachEmployeeType.employmentTypeId}
                 />
                 <label
                   htmlFor={eachEmployeeType.employmentTypeId}
-                  className='check-label'
+                  className="check-label"
                 >
                   {eachEmployeeType.label}
                 </label>
@@ -80,9 +80,9 @@ const FiltersGroup = props => {
   const renderSalaryRange = () => {
     const {salaryRangesList} = props
     return (
-      <div className='salary-range-container'>
-        <h1 className='salary-range-heading'>Salary Range</h1>
-        <ul className='salary-range-list-container'>
+      <div className="salary-range-container">
+        <h1 className="salary-range-heading">Salary Range</h1>
+        <ul className="salary-range-list-container">
           {salaryRangesList.map(eachSalary => {
             const {changeSalary} = props
             const onClickSalary = () => {
@@ -90,19 +90,19 @@ const FiltersGroup = props => {
             }
             return (
               <li
-                className='salary-item'
+                className="salary-item"
                 key={eachSalary.salaryRangeId}
                 onClick={onClickSalary}
               >
                 <input
-                  type='radio'
+                  type="radio"
                   id={eachSalary.salaryRangeId}
-                  name='salary'
-                  className='check-input'
+                  name="salary"
+                  className="check-input"
                 />
                 <label
                   htmlFor={eachSalary.salaryRangeId}
-                  className='check-label'
+                  className="check-label"
                 >
                   {eachSalary.label}
                 </label>
@@ -114,14 +114,47 @@ const FiltersGroup = props => {
     )
   }
 
+  const renderLocations = () => {
+    const {locationsList} = props
+
+    return (
+      <div>
+        <h1>Locations</h1>
+        <ul>
+          {locationsList.map(eachLocation => {
+            const {changeLocation} = props
+
+            const onChangeLocation = event => {
+              changeLocation(event.target.value)
+            }
+            return (
+              <li key={eachLocation.locationId} onChange={onChangeLocation}>
+                <input
+                  type="checkbox"
+                  id={eachLocation.locationId}
+                  value={eachLocation.locationId}
+                />
+                <label htmlFor={eachLocation.locationId}>
+                  {eachLocation.label}
+                </label>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
+
   return (
-    <div className='filters-group-container'>
+    <div className="filters-group-container">
       {renderSearchInput()}
       <ProfileDetails />
-      <hr className='horizontal-line' />
+      <hr className="horizontal-line" />
       {renderTypeOfEmployment()}
-      <hr className='horizontal-line' />
+      <hr className="horizontal-line" />
       {renderSalaryRange()}
+      <hr className="horizontal-line" />
+      {renderLocations()}
     </div>
   )
 }

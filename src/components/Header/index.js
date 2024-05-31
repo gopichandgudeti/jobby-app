@@ -6,7 +6,7 @@ import {FiLogOut} from 'react-icons/fi'
 import {AiFillHome} from 'react-icons/ai'
 import {BsFillBriefcaseFill} from 'react-icons/bs'
 
-/*import './index.css'*/
+/* import './index.css' */
 
 const Header = props => {
   const onClickLogout = () => {
@@ -44,7 +44,7 @@ const Header = props => {
                 className="nav-mobile-btn"
                 onClick={onClickLogout}
               >
-                <FiLogOut />
+                <FiLogOut aria-label="logout" />
               </button>
             </li>
           </ul>

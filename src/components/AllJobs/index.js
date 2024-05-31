@@ -5,8 +5,8 @@ import {AiOutlineSearch} from 'react-icons/ai'
 
 import Header from '../Header'
 
-import JobItem from '../JobItem'
-/*import './index.css'*/
+import JobCard from '../JobCard'
+/* import './index.css' */
 
 const employmentTypeList = [
   {
@@ -263,7 +263,7 @@ class AllJobs extends Component {
     ) : (
       <ul className="ul-job-items-container">
         {jobsData.map(eachItem => (
-          <JobItem key={eachItem.id} jobData={eachItem} />
+          <JobCard key={eachItem.id} jobData={eachItem} />
         ))}
       </ul>
     )
@@ -366,7 +366,7 @@ class AllJobs extends Component {
                 className="search-button"
                 onClick={this.onSubmitSearchInput}
               >
-                <AiOutlineSearch className="search-icon" />
+                <AiOutlineSearch className="search-icon" aria-label="search" />
               </button>
             </div>
             {this.onRenderJobStatus()}
